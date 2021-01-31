@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Form implementation generated from reading ui file 'my.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
@@ -9,6 +7,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import getpass
 
 
 class Ui_MainWindow(object):
@@ -68,7 +68,8 @@ class Ui_MainWindow(object):
         self.textEdit.setFont(font)
 
     def showdialogopen(self):
-        filename = QtWidgets.QFileDialog.getOpenFileName(MainWindow, "파일 열기")
+        filename = QtWidgets.QFileDialog.getOpenFileName(
+            MainWindow, "파일 열기", ("C:/Users/"+getpass.getuser()), "TXT 파일 (*.txt)")
         if not filename[0] == '':
             f = open(filename[0], 'r')
 
@@ -76,7 +77,8 @@ class Ui_MainWindow(object):
             f.close()
 
     def showdialogsave(self):
-        filename = QtWidgets.QFileDialog.getSaveFileName(MainWindow, "파일 저장")
+        filename = QtWidgets.QFileDialog.getSaveFileName(
+            MainWindow, "파일 저장", ("C:/Users/"+getpass.getuser()), "TXT 파일 (*.txt)")
         if not filename[0] == '':
             f = open(filename[0], 'w')
 
@@ -85,7 +87,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "ktkpad"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "ktkpad(windows)"))
         self.label.setText(_translate("MainWindow", "글씨크기"))
         self.pushButton.setText(_translate("MainWindow", "열기"))
         self.pushButton_2.setText(_translate("MainWindow", "저장"))
